@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
@@ -16,133 +17,175 @@ public class ActionCanvas : MonoBehaviour
 
     public bool isAttacking;
 
-    public bool isAdjacent;
+    public Countries currentSelectedCountry;
 
-    public string attackerTag;
-
-    public string defenderTag;
-    private void Start()
-    {
-        Manager = gameObject.GetComponent<GameManager>(); // gets the Game manager component
-       
-    }
 
   
-    public void AddSoldiers() // adds soldiers to an selected country
-    {
-        if (Manager.IsPlayerOneFirstTurn == true && Manager.currentCountry.tag == "PlayerOneCountry")
-        {
-            if (Manager.numberOfSoldiers != 0)
-            {
-                Manager.currentCountry.SoldiersNum += 1;
-                Manager.numberOfSoldiers = Manager.numberOfSoldiers - 1;
-            }
-        }
-        else if (Manager.playerOneTurn == true && Manager.currentCountry.tag == "PlayerOneCountry")
-        {
-            Manager.currentCountry.SoldiersNum += 1;
-            Manager.numberOfSoldiers = Manager.numberOfSoldiers - 1;
-        }
-
-
-        if (Manager.IsPlayerTwoFirstTurn == true && Manager.currentCountry.tag == "PlayerTwoCountry")
-        {
-            if (Manager.numberOfSoldiers != 0)
-            {
-                Manager.currentCountry.SoldiersNum += 1;
-                Manager.numberOfSoldiers = Manager.numberOfSoldiers - 1;
-            }
-        }
-
-        else if (Manager.PlayerTwoTurn == true && Manager.currentCountry.tag == "PlayerTwoCountry")
-        {
-            Manager.currentCountry.SoldiersNum += 1;
-            Manager.numberOfSoldiers = Manager.numberOfSoldiers - 1;
-        }
-
-    }
-
-    public void AddTanks() // adds soldiers to an selected country
-    {
-  
-
-        if (Manager.IsPlayerTwoFirstTurn == true && Manager.currentCountry.tag == "PlayerTwoCountry")
-        {
-            if (Manager.numberOfSoldiers != 0)
-            {
-                Manager.currentCountry.TankNum += 1;
-                Manager.numberOfTanks = Manager.numberOfTanks - 1;
-            }
-        }
-
-        else if (Manager.PlayerTwoTurn == true && Manager.currentCountry.tag == "PlayerTwoCountry")
-        {
-            Manager.currentCountry.TankNum += 1;
-            Manager.numberOfTanks = Manager.numberOfTanks - 1;
-        }
-
-    }
-
-
-
     public void EndTurn() // end of turn management, will happen when the player clicks the end of turn button
     {
 
         Manager.ActionsCanvas.SetActive(false); // disables all action canvas
         Manager.AttackAction.SetActive(false);
+        Manager.numberOfSoldiers = 0;
+        Manager.numberOfTanks = 0;
 
-        if (Manager.TurnCount == 1) //checks to see if it is the first turn after setup then assgins values for the next player
+        if (Manager.playerOneTurn == true)
         {
-            Manager.state = BattleStates.PLAYERTWOFIRSTTURN;
-            Manager.TurnCount = Manager.TurnCount + 1;
-            AssignTroops();
-            VictoryCheck();
-        }
-        if (Manager.TurnCount == 2) // checks to see witch player turn it is, then assign values
-        {
-            Manager.state = BattleStates.PLAYERONETURN;
-            Manager.TurnCount = Manager.TurnCount + 1;
-            AssignTroops();
-            VictoryCheck();
-        }
-        if (Manager.TurnCount % 2 != 0) // same
-        {
-            Manager.TurnCount = Manager.TurnCount + 1;
+            Manager.playerOneTurn = false;
+            Manager.TurnCount = Manager.TurnCount++;
             Manager.state = BattleStates.PLAYERTWOTURN;
-            AssignTroops();
-            VictoryCheck();
+            Manager.StatusText.text = "Player two's turn";
+            AssignTroopsPlayerTwo();
         }
-        if (Manager.TurnCount % 2 == 0) // same
+        else if (Manager.playerOneTurn == false)
         {
-            Manager.TurnCount = Manager.TurnCount + 1;
+            Manager.playerOneTurn = true;
+            Manager.TurnCount = Manager.TurnCount++;
             Manager.state = BattleStates.PLAYERONETURN;
-            AssignTroops();
-            VictoryCheck();
+            Manager.StatusText.text = "Player one's turn";
+            AssignTroopsPlayerOne();
         }
+
+
     }
 
-    public void AssignTroops() // assing troops based on the number of countries in a player list, tanks is the total by 4, and soldiers is the total by 2, all rounded down
+    public void AssignTroopsPlayerOne() // assing troops based on the number of countries in a player list, tanks is the total by 4, and soldiers is the total by 2, all rounded down
     {
-        if(Manager.state == BattleStates.PLAYERONEFIRSTTURN)
+
+        if (Manager.TurnCount < 1 && Manager.state == BattleStates.PLAYERONETURN)
         {
-            Manager.numberOfSoldiers = (Manager.PlayerOneCountries.Count / 2);
+            Manager.numberOfSoldiers = Manager.PlayerOneCountries.Count / 2;
+            if (Manager.numberOfSoldiers < 1)
+            {
+                Manager.numberOfSoldiers = 0;
+            }
         }
-        
-        if(Manager.state == BattleStates.PLAYERTWOFIRSTTURN)
+        else if (Manager.TurnCount < 2 && Manager.state == BattleStates.PLAYERONETURN)
         {
-            Manager.numberOfSoldiers = (Manager.PlayerTwoCountries.Count / 2);
+            Manager.numberOfSoldiers = Manager.PlayerOneCountries.Count / 2;
+            Manager.numberOfTanks = Manager.PlayerOneCountries.Count / 4;
+            if (Manager.numberOfSoldiers < 1)
+            {
+                Manager.numberOfSoldiers = 0;
+            }
+            else if (Manager.numberOfTanks < 1)
+            {
+                Manager.numberOfTanks = 0;
+            }
         }
 
-        if (Manager.state == BattleStates.PLAYERONETURN)
+    }
+
+    public void AssignTroopsPlayerTwo() // assing troops based on the number of countries in a player list, tanks is the total by 4, and soldiers is the total by 2, all rounded down
+    {
+
+        if (Manager.TurnCount < 1 && Manager.state == BattleStates.PLAYERTWOTURN)
         {
-            Manager.numberOfSoldiers = (Manager.PlayerOneCountries.Count / 2);
-            Manager.numberOfTanks = (Manager.PlayerOneCountries.Count / 4);
+            Manager.numberOfSoldiers = Manager.PlayerTwoCountries.Count / 2;
+            if (Manager.numberOfSoldiers < 1)
+            {
+                Manager.numberOfSoldiers = 0;
+            } 
         }
-        else if (Manager.state == BattleStates.PLAYERTWOTURN)
+        else if (Manager.TurnCount < 2 && Manager.state == BattleStates.PLAYERTWOTURN)
         {
-            Manager.numberOfSoldiers = (Manager.PlayerTwoCountries.Count / 2);
-            Manager.numberOfTanks = (Manager.PlayerTwoCountries.Count / 4);
+            Manager.numberOfSoldiers = Manager.PlayerTwoCountries.Count / 2;
+            Manager.numberOfTanks = Manager.PlayerTwoCountries.Count / 4;
+            if (Manager.numberOfSoldiers < 1)
+            {
+                Manager.numberOfSoldiers = 0;
+            }
+            else if (Manager.numberOfTanks < 1)
+            {
+                Manager.numberOfTanks = 0;
+            }
         }
+
+        
+
+    }
+
+    public void AddSoldiers()
+    {
+        if (Manager.playerOneTurn == true && currentSelectedCountry.tag == "PlayerOneCountry")
+        {
+            if (Manager.numberOfSoldiers != 0)
+            {
+                currentSelectedCountry.SoldiersNum++;
+                Manager.numberOfSoldiers--;
+            }
+            if (Manager.numberOfSoldiers == 0)
+            {
+                Debug.Log("No more soldiers to add and you have this amount of soldiers:");
+                Debug.Log(Manager.currentCountry.SoldiersNum);
+            }
+        }
+        else if (Manager.playerOneTurn == true && currentSelectedCountry.tag != "PlayerOneCountry")
+        {
+            Debug.Log("País n é seu");
+        }
+
+        if (Manager.playerOneTurn == false && currentSelectedCountry.tag == "PlayerTwoCountry")
+        {
+            if (Manager.numberOfSoldiers != 0)
+            {
+                currentSelectedCountry.SoldiersNum++;
+                Manager.numberOfSoldiers--;
+            }
+            if (Manager.numberOfSoldiers == 0)
+            {
+                Debug.Log("No more soldiers to add and you have this amount of soldiers:");
+                Debug.Log(Manager.currentCountry.SoldiersNum);
+            }
+        }
+        else if (Manager.playerOneTurn == false && currentSelectedCountry.tag != "PlayerTwoCountry")
+        {
+            Debug.Log("País n é seu");
+        }
+
+    }
+
+    public void AddTanks()
+    {
+        if (Manager.playerOneTurn == true && currentSelectedCountry.tag == "PlayerOneCountry")
+        {
+            if (Manager.numberOfTanks != 0)
+            {
+                currentSelectedCountry.TankNum++;
+                Manager.numberOfTanks--;
+
+            }
+            if (Manager.numberOfTanks == 0)
+            {
+                Debug.Log("No more soldiers to add and you have this amount of tanks:");
+                Debug.Log(Manager.currentCountry.TankNum);
+            }
+        }
+        else
+        {
+            Debug.Log("País n é seu");
+        }
+
+
+        if (Manager.playerOneTurn == false && currentSelectedCountry.tag == "PlayerTwoCountry")
+        {
+            if (Manager.numberOfTanks != 0)
+            {
+                currentSelectedCountry.TankNum++;
+                Manager.numberOfTanks--;
+
+            }
+            if (Manager.numberOfTanks == 0)
+            {
+                Debug.Log("No more soldiers to add and you have this amount of tanks:");
+                Debug.Log(Manager.currentCountry.TankNum);
+            }
+        }
+        else
+        {
+            Debug.Log("País n é seu");
+        }
+      
     }
 
     private void VictoryCheck() // checks if any player meets the victory requirement,
@@ -159,11 +202,8 @@ public class ActionCanvas : MonoBehaviour
 
     public void PlayerAttack()
     {
-        Manager.ActionsCanvas.SetActive(false);
-        Manager.AttackAction.SetActive(false);
-        isAttacking = true;
-        attackerSelected = true;
-        defenderSelected = false;
+        
+  
     }
 
     public void Attack(GameObject gameObject)

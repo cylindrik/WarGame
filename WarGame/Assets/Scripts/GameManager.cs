@@ -2,20 +2,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEditor.Experimental.GraphView;
+using TMPro;
 
-public enum BattleStates { START, PLAYERONEFIRSTTURN, PLAYERTWOFIRSTTURN, PLAYERONETURN, PLAYERTWOTURN, WON, LOST} // enumerator's gamestates
+public enum BattleStates { START, PLAYERONETURN, PLAYERTWOTURN, WON, LOST} // enumerator's gamestates
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject[] CountriesPrefab; // prefab for the country game object
     public int numberOfSoldiers; // number of soldiers to be given to a player at the end of each turn
     public int numberOfTanks; // number of tanks to be given to a player at the end of each turn
     public bool playerOneTurn; // says if it is player one's turn
-    public bool IsPlayerOneFirstTurn; // says if it is player one's FIRST turn
-    public bool IsPlayerTwoFirstTurn; // says if it is player two's FIRST turn
-    public bool PlayerTwoTurn; // says if it is player two's turn
 
     public int TurnCount;
 
+    public TMP_Text StatusText;
 
     [SerializeField] public GameObject ActionsCanvas; // canvas with actions a player can do in a round
     [SerializeField] public GameObject AttackAction; // Attack button needs to be disabled for first turn
@@ -26,8 +25,6 @@ public class GameManager : MonoBehaviour
     public List<GameObject> PlayerTwoCountries = new List<GameObject>(); // countries that will be assigned to player two
 
     [SerializeField] int NumOfCountries; // number of total contries
-    public List<GameObject> Player1Troops = new List<GameObject>(); // player one troops
-    public List<GameObject> Player2Troops = new List<GameObject>(); // player two troops
 
     public Countries currentCountry;
     public ActionCanvas Actions;
@@ -37,6 +34,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         CountriesPrefab = GameObject.FindGameObjectsWithTag("NoOwners"); // gets all countries with "No Owners tag"
+        
 
         foreach (GameObject Countries in CountriesPrefab)
         {
@@ -50,7 +48,8 @@ public class GameManager : MonoBehaviour
     void SetUpBattlefield() // sets ups battlefield, defining number of countries to go to each player
     {
 
-        Actions = gameObject.GetComponent<ActionCanvas>();
+        StatusText.text = "Setting up.";
+
 
         for (int i = 0; i < NumOfCountries; i++) // tags all contries as no man's land
         {
@@ -76,49 +75,55 @@ public class GameManager : MonoBehaviour
                 AllContries[i].tag = "PlayerTwoCountry";
             }          
         }
-        TurnCount = 1;
-        state = BattleStates.PLAYERONEFIRSTTURN; // sets battle state to player one turn
-        Actions.AssignTroops();
+
+        playerOneTurn = true;
+        state = BattleStates.PLAYERONETURN; // sets battle state to player one turn
+        StatusText.text = "Player one's turn";  
+        TurnCount = 0;
+        Actions.AssignTroopsPlayerOne();
     }
 
- 
+
     private void Update()
     {
-        
-       if (Input.GetMouseButtonDown(0)) // selects contry that the mouse clicked on.
-       {
+
+        if (Input.GetMouseButtonDown(0)) // selects contry that the mouse clicked on.
+        {
             RaycastHit raycastHit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out raycastHit, 100f))
-                {
+            {
                 if (raycastHit.transform != null)
                 {
                     actionsMenu(raycastHit.transform.gameObject);
                 }
+
+            }
+        }
+        else if (Input.GetMouseButtonDown(1)) // selects contry that the mouse right clicks on.
+        {
+            RaycastHit raycastHit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out raycastHit, 100f))
+            {
                 if (raycastHit.transform != null && Actions.isAttacking == true && Actions.defenderSelected == false)
                 {
-                 
-                    
+
+
                     Actions.Attack(raycastHit.transform.gameObject);
-                    
-                        
+
+
                 }
             }
-       }
-        
+        }
     }
-
 
     private void actionsMenu(GameObject gameObject) // function to call action canvas
     {
         currentCountry = gameObject.GetComponent<Countries>(); // gets the current country component
-
-        if (IsPlayerOneFirstTurn == true) // checks if it is the player one's first turn, if it is it disables the attack option
-        {
-            ActionsCanvas.SetActive(true);
-            AttackAction.SetActive(false);
-        }
-        else if (IsPlayerTwoFirstTurn == true) // checks if it is the player two's first turn, if it is it disables the attack option
+        Actions.currentSelectedCountry = currentCountry;
+        
+        if (TurnCount < 2) // checks if it is the player one's first turn, if it is it disables the attack option
         {
             ActionsCanvas.SetActive(true);
             AttackAction.SetActive(false);
