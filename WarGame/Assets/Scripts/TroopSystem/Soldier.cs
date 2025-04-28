@@ -1,14 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Soldier : Troop
 {
-    public override int Attack()
+
+    public override void Attack()
     {
-        return SortAttackValue();
+
     }
 
-    private int SortAttackValue()
-    {
-        return Random.Range(1, 6);
-    }
 }
