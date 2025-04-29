@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics.Geometry;
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
@@ -11,16 +12,34 @@ public class ActionCanvas : MonoBehaviour
 
     public bool defenderSelected = false;
 
-    public string attackerName;
-    
-    public string defenderName;
+    public Countries attackerName;
+
+    public Countries defenderName;
 
     public bool isAttacking;
 
     public Countries currentSelectedCountry;
 
+    public List<GameObject> AttackCountries = new List<GameObject>();
 
-  
+    public int maxSelections = 2;
+
+    
+
+    public void SelectObject(GameObject obj)
+    {
+        // Example selection effect - change color
+        obj.GetComponent<Renderer>().material.color = Color.green;
+        Debug.Log("Selected: " + obj.name);
+    }
+
+    public void DeselectObject(GameObject obj)
+    {
+        // Example deselection effect - revert color
+        obj.GetComponent<Renderer>().material.color = Color.white;
+        Debug.Log("Deselected: " + obj.name);
+    }
+
     public void EndTurn() // end of turn management, will happen when the player clicks the end of turn button
     {
 
@@ -28,6 +47,8 @@ public class ActionCanvas : MonoBehaviour
         Manager.AttackAction.SetActive(false);
         Manager.numberOfSoldiers = 0;
         Manager.numberOfTanks = 0;
+        Manager.TurnCount = Manager.TurnCount + 1;
+        Debug.Log(Manager.TurnCount);
 
         if (Manager.playerOneTurn == true)
         {
@@ -85,7 +106,7 @@ public class ActionCanvas : MonoBehaviour
             if (Manager.numberOfSoldiers < 1)
             {
                 Manager.numberOfSoldiers = 0;
-            } 
+            }
         }
         else if (Manager.TurnCount < 2 && Manager.state == BattleStates.PLAYERTWOTURN)
         {
@@ -101,7 +122,7 @@ public class ActionCanvas : MonoBehaviour
             }
         }
 
-        
+
 
     }
 
@@ -185,7 +206,7 @@ public class ActionCanvas : MonoBehaviour
         {
             Debug.Log("País n é seu");
         }
-      
+
     }
 
     private void VictoryCheck() // checks if any player meets the victory requirement,
@@ -200,10 +221,34 @@ public class ActionCanvas : MonoBehaviour
         }
     }
 
+    public void CloseCanvas()
+    {
+        Manager.ActionsCanvas.SetActive(false); // disables all action canvas
+        Manager.AttackAction.SetActive(false);
+    }
+
     public void PlayerAttack()
     {
-        
-  
+        Manager.ActionsCanvas.SetActive(false); 
+        Manager.AttackAction.SetActive(false);
+        isAttacking = true;
+      
+    }
+
+    public void Attacking()
+    {
+        bool Adjacent = false;
+        attackerName = AttackCountries[0].GetComponent<Countries>();
+        defenderName = AttackCountries[1].GetComponent<Countries>();
+
+        if(attackerName.Adjacents.Contains(defenderName))
+        {
+            Adjacent = true;
+        }
+
+        //attackerName.Adjacents.Contains(defenderName);
+        Debug.Log(Adjacent);
+
     }
 
     public void Attack(GameObject gameObject)
