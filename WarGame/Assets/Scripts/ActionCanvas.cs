@@ -24,11 +24,14 @@ public class ActionCanvas : MonoBehaviour
 
     public int maxSelections = 2;
 
+    public Color DefaultColor; 
+
     
 
     public void SelectObject(GameObject obj)
     {
         // Example selection effect - change color
+        
         obj.GetComponent<Renderer>().material.color = Color.green;
         Debug.Log("Selected: " + obj.name);
     }
@@ -100,7 +103,7 @@ public class ActionCanvas : MonoBehaviour
     public void AssignTroopsPlayerTwo() // assing troops based on the number of countries in a player list, tanks is the total by 4, and soldiers is the total by 2, all rounded down
     {
 
-        if (Manager.TurnCount < 1 && Manager.state == BattleStates.PLAYERTWOTURN)
+        if (Manager.TurnCount < 3 && Manager.state == BattleStates.PLAYERTWOTURN)
         {
             Manager.numberOfSoldiers = Manager.PlayerTwoCountries.Count / 2;
             if (Manager.numberOfSoldiers < 1)
@@ -108,7 +111,7 @@ public class ActionCanvas : MonoBehaviour
                 Manager.numberOfSoldiers = 0;
             }
         }
-        else if (Manager.TurnCount < 2 && Manager.state == BattleStates.PLAYERTWOTURN)
+        else if (Manager.TurnCount < 3 && Manager.state == BattleStates.PLAYERTWOTURN)
         {
             Manager.numberOfSoldiers = Manager.PlayerTwoCountries.Count / 2;
             Manager.numberOfTanks = Manager.PlayerTwoCountries.Count / 4;
@@ -244,6 +247,15 @@ public class ActionCanvas : MonoBehaviour
         if(attackerName.Adjacents.Contains(defenderName))
         {
             Adjacent = true;
+            Manager.AttackCanvas.SetActive(false);
+            isAttacking = false;
+            foreach (GameObject obj in AttackCountries)
+            {
+                obj.GetComponent<Renderer>().material.color = DefaultColor;
+            }
+
+            AttackCountries.Clear();
+
         }
 
         //attackerName.Adjacents.Contains(defenderName);
@@ -251,10 +263,14 @@ public class ActionCanvas : MonoBehaviour
 
     }
 
-    public void Attack(GameObject gameObject)
+    public void CancelAttack()
     {
-        Debug.Log(attackerName);
-        Debug.Log(defenderName);
-        
+        Manager.AttackCanvas.SetActive(false);
+        foreach (GameObject obj in AttackCountries)
+        {
+            obj.GetComponent<Renderer>().material.color = DefaultColor;
+        }
+
+        AttackCountries.Clear();
     }
 }
