@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using TMPro;
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class ActionCanvas : MonoBehaviour
@@ -82,6 +79,7 @@ public class ActionCanvas : MonoBehaviour
         if (Manager.TurnCount < 1 && Manager.state == BattleStates.PLAYERTWOTURN)
         {
             Manager.numberOfSoldiers = Manager.PlayerTwoCountries.Count / 2;
+
             if (Manager.numberOfSoldiers < 1)
             {
                 Manager.numberOfSoldiers = 0;
