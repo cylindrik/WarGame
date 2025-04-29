@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: Player 1
   playerMaterialColor: {fileID: 2100000, guid: bd214735452848c448eae1c46e269695, type: 2}
-  playerColor: {r: 1, g: 0, b: 0, a: 0}
+  playerColor: {r: 1, g: 0, b: 0, a: 1}
