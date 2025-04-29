@@ -9,8 +9,12 @@ public class Countries : MonoBehaviour
     
     public List<Countries> Adjacents = new List<Countries>(); //countries that are adjacent
     private Vector3 position; // the country current position
-    
+    [SerializeField]
+    private Renderer meshRenderer;
 
+    
+    
+    
     [SerializeField] public int SoldiersNum; // number of soldiers
     [SerializeField] public int TankNum; //number of tanks
     [SerializeField] public int AANum; // number of AAs
@@ -24,6 +28,11 @@ public class Countries : MonoBehaviour
         SoldiersNum = 0;
         TankNum = 0;
         AANum = 0;
+    }
+
+    public void SetMaterialColor(Material color)
+    {
+        meshRenderer.material = color;
     }
 }
     

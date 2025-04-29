@@ -252,16 +252,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 90262522}
   m_CullTransparentMesh: 1
---- !u!1 &140393575 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-  m_PrefabInstance: {fileID: 1194563956}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &174232678 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-  m_PrefabInstance: {fileID: 2014508792}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &190783290
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,11 +385,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190783290}
   m_CullTransparentMesh: 1
---- !u!1 &201712920 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-  m_PrefabInstance: {fileID: 390494200}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &206910626
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,18 +1069,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.6200001
       objectReference: {fileID: 0}
@@ -1139,18 +1112,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Equador
       objectReference: {fileID: 0}
-    - target: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_TagString
-      value: NoOwners
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: OwnCountry
-      value: 
-      objectReference: {fileID: 735064352}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: Adjacents.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: 'Adjacents.Array.data[0]'
       value: 
@@ -1169,17 +1130,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
   m_PrefabInstance: {fileID: 359548592}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735064352}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5eed7e7c40d8ef540b59620fc7919032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &369182894 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-  m_PrefabInstance: {fileID: 1676599261}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &390494200
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1188,18 +1144,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.040000003
-      objectReference: {fileID: 0}
     - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.946
@@ -1244,14 +1188,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chile
       objectReference: {fileID: 0}
-    - target: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_TagString
-      value: NoOwners
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: OwnCountry
-      value: 
-      objectReference: {fileID: 201712920}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1262,7 +1198,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
   m_PrefabInstance: {fileID: 390494200}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201712920}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5eed7e7c40d8ef540b59620fc7919032, type: 3}
@@ -1389,11 +1325,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
---- !u!1 &437548591 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-  m_PrefabInstance: {fileID: 900900164}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &502527967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,18 +1421,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.024
       objectReference: {fileID: 0}
@@ -1545,18 +1464,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Uruguai
       objectReference: {fileID: 0}
-    - target: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_TagString
-      value: NoOwners
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: OwnCountry
-      value: 
-      objectReference: {fileID: 902984270}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: Adjacents.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: 'Adjacents.Array.data[0]'
       value: 
@@ -1575,7 +1482,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
   m_PrefabInstance: {fileID: 546453619}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 902984270}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5eed7e7c40d8ef540b59620fc7919032, type: 3}
@@ -1731,11 +1638,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677033377}
   m_CullTransparentMesh: 1
---- !u!1 &735064352 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-  m_PrefabInstance: {fileID: 359548592}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &758728467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1865,11 +1767,6 @@ MonoBehaviour:
   currentSelectedCountry: {fileID: 0}
   AttackCountries: []
   maxSelections: 1
---- !u!1 &820447266 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-  m_PrefabInstance: {fileID: 1376658035}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1928,18 +1825,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.5180001
       objectReference: {fileID: 0}
@@ -1983,18 +1868,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Colombia
       objectReference: {fileID: 0}
-    - target: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_TagString
-      value: NoOwners
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: OwnCountry
-      value: 
-      objectReference: {fileID: 437548591}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: Adjacents.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: 'Adjacents.Array.data[0]'
       value: 
@@ -2021,17 +1894,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
   m_PrefabInstance: {fileID: 900900164}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 437548591}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5eed7e7c40d8ef540b59620fc7919032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &902984270 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-  m_PrefabInstance: {fileID: 546453619}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &920824216
 GameObject:
   m_ObjectHideFlags: 0
@@ -2467,6 +2335,8 @@ MonoBehaviour:
   currentCountry: {fileID: 0}
   Actions: {fileID: 758728472}
   state: 0
+  playerOneConfig: {fileID: 11400000, guid: 152248308cc36e348a47084c9b87a7dd, type: 2}
+  playerTwoConfig: {fileID: 11400000, guid: f26f035edddfad64aa5b1cc9a280fe01, type: 2}
 --- !u!4 &1174956421
 Transform:
   m_ObjectHideFlags: 0
@@ -2491,18 +2361,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.040000003
-      objectReference: {fileID: 0}
     - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.48400003
@@ -2547,18 +2405,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Suriname
       objectReference: {fileID: 0}
-    - target: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_TagString
-      value: NoOwners
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: OwnCountry
-      value: 
-      objectReference: {fileID: 140393575}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: Adjacents.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: 'Adjacents.Array.data[0]'
       value: 
@@ -2577,7 +2423,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
   m_PrefabInstance: {fileID: 1194563956}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 140393575}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5eed7e7c40d8ef540b59620fc7919032, type: 3}
@@ -2941,18 +2787,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.1600001
       objectReference: {fileID: 0}
@@ -2996,18 +2830,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Venezuela
       objectReference: {fileID: 0}
-    - target: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_TagString
-      value: NoOwners
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: OwnCountry
-      value: 
-      objectReference: {fileID: 820447266}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: Adjacents.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: 'Adjacents.Array.data[0]'
       value: 
@@ -3030,7 +2852,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
   m_PrefabInstance: {fileID: 1376658035}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 820447266}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5eed7e7c40d8ef540b59620fc7919032, type: 3}
@@ -3044,18 +2866,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.040000003
-      objectReference: {fileID: 0}
     - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.36600003
@@ -3100,18 +2910,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Paraguai
       objectReference: {fileID: 0}
-    - target: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_TagString
-      value: NoOwners
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: OwnCountry
-      value: 
-      objectReference: {fileID: 2007371049}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: Adjacents.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: 'Adjacents.Array.data[0]'
       value: 
@@ -3134,7 +2932,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
   m_PrefabInstance: {fileID: 1479204924}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2007371049}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5eed7e7c40d8ef540b59620fc7919032, type: 3}
@@ -3355,11 +3153,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1674628110 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-  m_PrefabInstance: {fileID: 1855021759}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1676599261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3368,18 +3161,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.040000003
-      objectReference: {fileID: 0}
     - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.266
@@ -3424,18 +3205,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Guiana
       objectReference: {fileID: 0}
-    - target: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_TagString
-      value: NoOwners
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: OwnCountry
-      value: 
-      objectReference: {fileID: 369182894}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: Adjacents.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: 'Adjacents.Array.data[0]'
       value: 
@@ -3458,7 +3227,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
   m_PrefabInstance: {fileID: 1676599261}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 369182894}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5eed7e7c40d8ef540b59620fc7919032, type: 3}
@@ -3878,18 +3647,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.002
       objectReference: {fileID: 0}
@@ -3933,18 +3690,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Peru
       objectReference: {fileID: 0}
-    - target: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_TagString
-      value: NoOwners
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: OwnCountry
-      value: 
-      objectReference: {fileID: 1674628110}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: Adjacents.Array.size
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: 'Adjacents.Array.data[0]'
       value: 
@@ -3975,17 +3720,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
   m_PrefabInstance: {fileID: 1855021759}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1674628110}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5eed7e7c40d8ef540b59620fc7919032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2007371049 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-  m_PrefabInstance: {fileID: 1479204924}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2014508792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3994,18 +3734,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.040000003
-      objectReference: {fileID: 0}
     - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.128
@@ -4050,18 +3778,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Argentina
       objectReference: {fileID: 0}
-    - target: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_TagString
-      value: NoOwners
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: OwnCountry
-      value: 
-      objectReference: {fileID: 174232678}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: Adjacents.Array.size
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: 'Adjacents.Array.data[0]'
       value: 
@@ -4092,7 +3808,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
   m_PrefabInstance: {fileID: 2014508792}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 174232678}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5eed7e7c40d8ef540b59620fc7919032, type: 3}
@@ -4106,18 +3822,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.040000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.040000003
-      objectReference: {fileID: 0}
     - target: {fileID: 5966290845633280608, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.21
@@ -4162,18 +3866,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bolivia
       objectReference: {fileID: 0}
-    - target: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: m_TagString
-      value: NoOwners
-      objectReference: {fileID: 0}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: OwnCountry
-      value: 
-      objectReference: {fileID: 2139667682}
-    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
-      propertyPath: Adjacents.Array.size
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: 'Adjacents.Array.data[0]'
       value: 
@@ -4204,7 +3896,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
   m_PrefabInstance: {fileID: 2073319559}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2139667682}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5eed7e7c40d8ef540b59620fc7919032, type: 3}
@@ -4346,11 +4038,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2084130040}
   m_CullTransparentMesh: 1
---- !u!1 &2139667682 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6491771130738034266, guid: e330b85027431da4884317c95871345a, type: 3}
-  m_PrefabInstance: {fileID: 2073319559}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4366120782584267225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4419,10 +4106,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: NoOwners
       objectReference: {fileID: 0}
+    - target: {fileID: 7145782262735072484, guid: e330b85027431da4884317c95871345a, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7145782262735072484, guid: e330b85027431da4884317c95871345a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fb4e380ce5db6924ea33132337d03546, type: 2}
     - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: OwnCountry
       value: 
       objectReference: {fileID: 1320859900}
+    - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
+      propertyPath: meshRenderer
+      value: 
+      objectReference: {fileID: 4366120782584267228}
     - target: {fileID: 7810503124682848886, guid: e330b85027431da4884317c95871345a, type: 3}
       propertyPath: Adjacents.Array.size
       value: 9
@@ -4483,6 +4182,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eed7e7c40d8ef540b59620fc7919032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!23 &4366120782584267228 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7145782262735072484, guid: e330b85027431da4884317c95871345a, type: 3}
+  m_PrefabInstance: {fileID: 4366120782584267225}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
