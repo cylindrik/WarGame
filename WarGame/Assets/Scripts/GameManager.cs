@@ -97,6 +97,7 @@ public class GameManager : MonoBehaviour
             {
                 if (raycastHit.transform != null && Actions.isAttacking == false)
                 {
+                    
                     actionsMenu(raycastHit.transform.gameObject);
                 }
 
@@ -120,8 +121,7 @@ public class GameManager : MonoBehaviour
                         if (Actions.AttackCountries.Count >= Actions.maxSelections)
                         {
                             AttackCanvas.SetActive(true);
-                            //Actions.DeselectObject(Actions.AttackCountries[0]); // Deselect the first object if we already have 2
-                            //Actions.AttackCountries.RemoveAt(0);
+                            
                         }
 
                         Actions.SelectObject(clickedObject);
@@ -142,6 +142,7 @@ public class GameManager : MonoBehaviour
     private void actionsMenu(GameObject gameObject) // function to call action canvas
     {
         currentCountry = gameObject.GetComponent<Countries>(); // gets the current country component
+        Actions.DefaultColor = currentCountry.GetComponent<Renderer>().material.color;
         Actions.currentSelectedCountry = currentCountry;
         
         if (TurnCount < 2) // checks if it is the player one's first turn, if it is it disables the attack option
