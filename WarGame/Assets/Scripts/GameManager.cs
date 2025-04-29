@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public int numberOfTanks; // number of tanks to be given to a player at the end of each turn
     public bool playerOneTurn; // says if it is player one's turn
 
+    [SerializeField] public GameObject AttackCanvas;
+
     public int TurnCount;
 
     public TMP_Text StatusText;
@@ -93,29 +95,48 @@ public class GameManager : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out raycastHit, 100f))
             {
-                if (raycastHit.transform != null)
+                if (raycastHit.transform != null && Actions.isAttacking == false)
                 {
                     actionsMenu(raycastHit.transform.gameObject);
                 }
 
             }
         }
-        else if (Input.GetMouseButtonDown(1)) // selects contry that the mouse right clicks on.
+
+        if (Actions.isAttacking == true)
         {
-            RaycastHit raycastHit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out raycastHit, 100f))
+            if (Input.GetMouseButtonDown(0))
             {
-                if (raycastHit.transform != null && Actions.isAttacking == true && Actions.defenderSelected == false)
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
                 {
+                    GameObject clickedObject = hit.collider.gameObject;
 
 
-                    Actions.Attack(raycastHit.transform.gameObject);
+                    if (!Actions.AttackCountries.Contains(clickedObject))
+                    {
+                        if (Actions.AttackCountries.Count >= Actions.maxSelections)
+                        {
+                            AttackCanvas.SetActive(true);
+                            //Actions.DeselectObject(Actions.AttackCountries[0]); // Deselect the first object if we already have 2
+                            //Actions.AttackCountries.RemoveAt(0);
+                        }
 
-
+                        Actions.SelectObject(clickedObject);
+                        Actions.AttackCountries.Add(clickedObject);
+                    }
+                    else
+                    {
+                        // Clicked on already selected object - deselect it
+                        Actions.DeselectObject(clickedObject);
+                        Actions.AttackCountries.Remove(clickedObject);
+                    }
                 }
             }
         }
+
     }
 
     private void actionsMenu(GameObject gameObject) // function to call action canvas
@@ -128,7 +149,7 @@ public class GameManager : MonoBehaviour
             ActionsCanvas.SetActive(true);
             AttackAction.SetActive(false);
         }
-        else // after the initial turns, it just displays the full action canvas
+        else if (TurnCount >= 2) // after the initial turns, it just displays the full action canvas
         {
             ActionsCanvas.SetActive(true);
             AttackAction.SetActive(true);
