@@ -70,7 +70,10 @@ public class GameManager : MonoBehaviour
         {
             PlayerOneCountries.Add(AllContries[i]);
             AllContries[i].tag = "PlayerOneCountry";
-            AllContries[i].GetComponent<Countries>().SetMaterialColor(playerOneConfig.playerMaterialColor);
+            Countries country = AllContries[i].GetComponent<Countries>();
+            country.SetMaterialColor(playerOneConfig.playerMaterialColor);
+            country.SetPlayerColor(playerOneConfig.playerColor);
+            country.SetPlayerName(playerOneConfig.playerName);
         }
         
         int P2Countries = NumOfCountries; // assigns the remainer of countries to player two 
@@ -81,8 +84,11 @@ public class GameManager : MonoBehaviour
             if (AllContries[i].tag != "PlayerOneCountry" && AllContries[i].tag == "NoOwners")
             {
                 PlayerTwoCountries.Add(AllContries[i]);
-                AllContries[i].GetComponent<Countries>().SetMaterialColor(playerTwoConfig.playerMaterialColor);
                 AllContries[i].tag = "PlayerTwoCountry";
+                Countries country = AllContries[i].GetComponent<Countries>();
+                country.SetMaterialColor(playerTwoConfig.playerMaterialColor);
+                country.SetPlayerColor(playerTwoConfig.playerColor);
+                country.SetPlayerName(playerTwoConfig.playerName);
             }          
         }
 

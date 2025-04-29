@@ -11,10 +11,22 @@ public class Countries : MonoBehaviour
     private Vector3 position; // the country current position
     [SerializeField]
     private Renderer meshRenderer;
+    
+    [SerializeField]
+    private GameObject soldierPrefab;
 
-    
-    
-    
+    [SerializeField]
+    private GameObject tankPrefab;
+
+    [SerializeField]
+    private GameObject antiAerialPrefab;
+
+    [SerializeField]
+    private GameObject planePrefab;
+
+    private Color playerColor;
+    private string playerName;
+
     [SerializeField] public int SoldiersNum; // number of soldiers
     [SerializeField] public int TankNum; //number of tanks
     [SerializeField] public int AANum; // number of AAs
@@ -33,6 +45,26 @@ public class Countries : MonoBehaviour
     public void SetMaterialColor(Material color)
     {
         meshRenderer.material = color;
+    }
+
+    public void SetPlayerName(string name)
+    {
+        playerName = name;
+    }
+
+    public void SetPlayerColor(Color color)
+    {
+        playerColor = color;
+    }
+
+    public Color GetPlayerColor()
+    {
+        return playerColor;
+    }
+
+    public string GetPlayerName()
+    {
+        return playerName;
     }
 }
     

@@ -5,5 +5,6 @@ public class PlayeConfig : ScriptableObject
 {
     public string playerName;
     public Material playerMaterialColor;
+    public Color playerColor;
 
 }
