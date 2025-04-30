@@ -33,6 +33,12 @@ public class GameManager : MonoBehaviour
 
     public BattleStates state; //enumerator to control game states
 
+    [SerializeField]
+    private PlayeConfig playerOneConfig;
+
+    [SerializeField]
+    private PlayeConfig playerTwoConfig;
+
     private void Start()
     {
         CountriesPrefab = GameObject.FindGameObjectsWithTag("NoOwners"); // gets all countries with "No Owners tag"
@@ -64,6 +70,10 @@ public class GameManager : MonoBehaviour
         {
             PlayerOneCountries.Add(AllContries[i]);
             AllContries[i].tag = "PlayerOneCountry";
+            Countries country = AllContries[i].GetComponent<Countries>();
+            country.SetMaterialColor(playerOneConfig.playerMaterialColor);
+            country.SetPlayerColor(playerOneConfig.playerColor);
+            country.SetPlayerName(playerOneConfig.playerName);
         }
         
         int P2Countries = NumOfCountries; // assigns the remainer of countries to player two 
@@ -75,6 +85,10 @@ public class GameManager : MonoBehaviour
             {
                 PlayerTwoCountries.Add(AllContries[i]);
                 AllContries[i].tag = "PlayerTwoCountry";
+                Countries country = AllContries[i].GetComponent<Countries>();
+                country.SetMaterialColor(playerTwoConfig.playerMaterialColor);
+                country.SetPlayerColor(playerTwoConfig.playerColor);
+                country.SetPlayerName(playerTwoConfig.playerName);
             }          
         }
 

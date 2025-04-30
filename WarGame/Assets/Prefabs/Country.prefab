@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 8325717170570283646}
   m_Layer: 0
   m_Name: Country
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_TagString: NoOwners
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -31.67506, y: 90.854614, z: -29.032488}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.040000003, y: 0.040000003, z: 0.040000003}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,7 +51,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6491771130738034266}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: fb4e380ce5db6924ea33132337d03546, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,15 +100,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eed7e7c40d8ef540b59620fc7919032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Adjacents: []
-  position: {x: 0, y: 0, z: 0}
-  CurrentOwner: 0
+  Adjacents:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  meshRenderer: {fileID: 7145782262735072484}
+  soldierPrefab: {fileID: 1970735969485698678, guid: 59d290b11b03b244cb3625fedcb59e82, type: 3}
+  tankPrefab: {fileID: 4937073896141461775, guid: db5e9b5d3467d9f40acf415acf92c58b, type: 3}
+  antiAerialPrefab: {fileID: 252678864833986000, guid: 824f410c6b6ba574d8a39c7065788398, type: 3}
+  planePrefab: {fileID: 875701513753740820, guid: 17858ec8d0165c840a9ca584c1141737, type: 3}
   SoldiersNum: 0
   TankNum: 0
   AANum: 0
-  Soldiers: {fileID: 0}
-  Tank: {fileID: 0}
-  AAs: {fileID: 0}
 --- !u!64 &8325717170570283646
 MeshCollider:
   m_ObjectHideFlags: 0
