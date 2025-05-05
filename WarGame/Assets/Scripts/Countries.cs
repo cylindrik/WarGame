@@ -13,10 +13,10 @@ public class Countries : MonoBehaviour
     private Renderer meshRenderer;
     
     [SerializeField]
-    private GameObject soldierPrefab;
+    public GameObject soldierPrefab;
 
     [SerializeField]
-    private GameObject tankPrefab;
+    public GameObject tankPrefab;
 
     [SerializeField]
     private GameObject antiAerialPrefab;
@@ -24,22 +24,37 @@ public class Countries : MonoBehaviour
     [SerializeField]
     private GameObject planePrefab;
 
-    private Color playerColor;
+    public Color playerColor;
     private string playerName;
+
+    private int SoldiersAdded = 0;
+
+    private int TanksAdded = 0;
+    private Vector3 CountryPosition;
 
     [SerializeField] public int SoldiersNum; // number of soldiers
     [SerializeField] public int TankNum; //number of tanks
     [SerializeField] public int AANum; // number of AAs
 
-    //[SerializeField] GameObject Soldiers; //soldiers prefab
-    //[SerializeField] GameObject Tank; //tanks prefab
-    //[SerializeField] GameObject AAs; //Anti Aircraft prefab
 
     private void Start()
     {
         SoldiersNum = 0;
         TankNum = 0;
         AANum = 0;
+        CountryPosition = transform.position;
+    }
+
+    private void Update()
+    {
+        if (SoldiersNum != 0)
+        {
+            SoldierInstantiate();
+        }
+        if (TankNum != 0)
+        {
+            TankInstantiate();
+        }
     }
 
     public void SetMaterialColor(Material color)
@@ -66,6 +81,27 @@ public class Countries : MonoBehaviour
     {
         return playerName;
     }
+
+    public void SoldierInstantiate()
+    {
+
+        while (SoldiersNum != 0 && SoldiersAdded != SoldiersNum)
+        {
+            Instantiate(soldierPrefab, CountryPosition.normalized, Quaternion.identity);
+            SoldiersAdded++;
+        }   
+    }
+    public void TankInstantiate()
+    {
+
+        while (TankNum != 0 && TanksAdded != TankNum)
+        {
+            Instantiate(tankPrefab, CountryPosition.normalized, Quaternion.identity);
+            TanksAdded++;
+        }
+
+    }
+    
 }
     
         

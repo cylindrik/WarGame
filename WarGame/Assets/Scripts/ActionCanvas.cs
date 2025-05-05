@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using TMPro;
 using Unity.Mathematics.Geometry;
 using UnityEditor.Timeline.Actions;
@@ -14,6 +16,8 @@ public class ActionCanvas : MonoBehaviour
 
     public Countries attackerName;
 
+    public Countries CountriesObj;
+
     public Countries defenderName;
 
     public bool isAttacking;
@@ -24,9 +28,12 @@ public class ActionCanvas : MonoBehaviour
 
     public int maxSelections = 2;
 
-    public Color DefaultColor; 
+    public Color DefaultColor;
 
-    
+    public Color OriginalCountryColor;
+
+    public Troop Troops;
+
 
     public void SelectObject(GameObject obj)
     {
@@ -39,7 +46,7 @@ public class ActionCanvas : MonoBehaviour
     public void DeselectObject(GameObject obj)
     {
         // Example deselection effect - revert color
-        obj.GetComponent<Renderer>().material.color = Color.white;
+        obj.GetComponent<Renderer>().material.color = DefaultColor;
         Debug.Log("Deselected: " + obj.name);
     }
 
@@ -131,12 +138,16 @@ public class ActionCanvas : MonoBehaviour
 
     public void AddSoldiers()
     {
+
+       
+
         if (Manager.playerOneTurn == true && currentSelectedCountry.tag == "PlayerOneCountry")
         {
             if (Manager.numberOfSoldiers != 0)
             {
                 currentSelectedCountry.SoldiersNum++;
                 Manager.numberOfSoldiers--;
+
             }
             if (Manager.numberOfSoldiers == 0)
             {
@@ -154,6 +165,7 @@ public class ActionCanvas : MonoBehaviour
             if (Manager.numberOfSoldiers != 0)
             {
                 currentSelectedCountry.SoldiersNum++;
+                
                 Manager.numberOfSoldiers--;
             }
             if (Manager.numberOfSoldiers == 0)
@@ -240,26 +252,134 @@ public class ActionCanvas : MonoBehaviour
 
     public void Attacking()
     {
+        int AttackDice = 0;
+        int DefendDice = 0;
         bool Adjacent = false;
         attackerName = AttackCountries[0].GetComponent<Countries>();
         defenderName = AttackCountries[1].GetComponent<Countries>();
+        
 
-        if(attackerName.Adjacents.Contains(defenderName))
-        {
+
+        if (attackerName.Adjacents.Contains(defenderName) && attackerName.tag != defenderName.tag)
+        { 
             Adjacent = true;
             Manager.AttackCanvas.SetActive(false);
             isAttacking = false;
-            foreach (GameObject obj in AttackCountries)
+
+            
+
+            if (attackerName.SoldiersNum >= defenderName.SoldiersNum && attackerName.TankNum == 0 && defenderName.TankNum == 0)
             {
-                obj.GetComponent<Renderer>().material.color = DefaultColor;
+                //Ataca com soldados
+                Troops = AttackCountries[0].GetComponent<Countries>().soldierPrefab.GetComponent<Troop>();
+
+                AttackDice = Troops.AttackNormal();
+                DefendDice = Troops.AttackNormal();
+                Debug.Log(AttackDice);
+                Debug.Log(DefendDice);
+
+
+                if (AttackDice > DefendDice)
+                {
+                    defenderName.SoldiersNum = 0;
+                    defenderName.TankNum = 0;
+                    defenderName.AANum = 0;
+                    defenderName.tag = attackerName.tag;
+                    AttackDice = 0;
+                    DefendDice = 0;
+                    Debug.Log("Attack bem sucedido");
+                    if (defenderName.tag == attackerName.tag)
+                    {
+                        foreach (GameObject obj in AttackCountries)
+                        {
+                            obj.GetComponent<Renderer>().material.color = DefaultColor;
+                        }
+                    }
+
+                }
+                else if (AttackDice < DefendDice)
+                {
+                    attackerName.SoldiersNum = attackerName.SoldiersNum--;
+                    AttackDice = 0;
+                    DefendDice = 0;
+                    Debug.Log("Attack falhou");
+                    if (defenderName.tag != attackerName.tag)
+                    {
+                        foreach (GameObject obj in AttackCountries)
+                        {
+                            if (obj.tag == attackerName.tag)
+                            {
+                                attackerName.GetComponent<Renderer>().material.color = attackerName.playerColor;
+
+                            }
+                            else if (obj.tag == defenderName.tag)
+                            {
+                                defenderName.GetComponent<Renderer>().material.color = defenderName.playerColor;
+                            }
+                        }
+                    }
+                }
+
             }
+
+            else  if (attackerName.SoldiersNum >= defenderName.SoldiersNum && attackerName.TankNum > 0 && defenderName.TankNum == 0)
+            {
+                 AttackDice = Troops.AttackAdvantage();
+                 DefendDice = Troops.AttackNormal(); ;
+
+                if (DefendDice < AttackDice)
+                {
+                    defenderName.SoldiersNum = 0;
+                    defenderName.TankNum = 0;
+                    defenderName.AANum = 0;
+                    defenderName.tag = attackerName.tag;
+                    AttackDice = 0;
+                    DefendDice = 0;
+                    Debug.Log("Attack bem sucedido");
+                }
+                else
+                {
+                    attackerName.SoldiersNum--;
+                    attackerName.TankNum--;
+                    AttackDice = 0;
+                    DefendDice = 0;
+                    Debug.Log("Attack falhou");
+                }
+            }
+
+            else if (attackerName.SoldiersNum >= defenderName.SoldiersNum && attackerName.TankNum == 0 && defenderName.TankNum > 0)
+            {
+                AttackDice = Troops.AttackDisadvantage();
+                DefendDice = Troops.AttackNormal(); 
+
+                if (DefendDice < AttackDice)
+                {
+                    defenderName.SoldiersNum = 0;
+                    defenderName.TankNum = 0;
+                    defenderName.AANum = 0;
+                    defenderName.tag = attackerName.tag;
+                    AttackDice = 0;
+                    DefendDice = 0;
+                    Debug.Log("Attack bem sucedido");
+                }
+                else
+                {
+                    attackerName.SoldiersNum--;
+                    attackerName.TankNum--;
+                    AttackDice = 0;
+                    DefendDice = 0;
+                    Debug.Log("Attack falhou");
+                }
+            }
+
+          
 
             AttackCountries.Clear();
 
         }
 
-        //attackerName.Adjacents.Contains(defenderName);
-        Debug.Log(Adjacent);
+            //attackerName.Adjacents.Contains(defenderName);
+            Debug.Log(Adjacent);
 
     }
 
