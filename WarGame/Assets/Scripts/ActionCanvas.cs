@@ -91,7 +91,7 @@ public class ActionCanvas : MonoBehaviour
                 Manager.numberOfSoldiers = 0;
             }
         }
-        else if (Manager.TurnCount < 2 && Manager.state == BattleStates.PLAYERONETURN)
+        else if (Manager.TurnCount > 1 && Manager.state == BattleStates.PLAYERONETURN)
         {
             Manager.numberOfSoldiers = Manager.PlayerOneCountries.Count / 2;
             Manager.numberOfTanks = Manager.PlayerOneCountries.Count / 4;
@@ -110,7 +110,7 @@ public class ActionCanvas : MonoBehaviour
     public void AssignTroopsPlayerTwo() // assing troops based on the number of countries in a player list, tanks is the total by 4, and soldiers is the total by 2, all rounded down
     {
 
-        if (Manager.TurnCount < 3 && Manager.state == BattleStates.PLAYERTWOTURN)
+        if (Manager.TurnCount < 2 && Manager.state == BattleStates.PLAYERTWOTURN)
         {
             Manager.numberOfSoldiers = Manager.PlayerTwoCountries.Count / 2;
             if (Manager.numberOfSoldiers < 1)
@@ -118,7 +118,7 @@ public class ActionCanvas : MonoBehaviour
                 Manager.numberOfSoldiers = 0;
             }
         }
-        else if (Manager.TurnCount < 3 && Manager.state == BattleStates.PLAYERTWOTURN)
+        else if (Manager.TurnCount > 2 && Manager.state == BattleStates.PLAYERTWOTURN)
         {
             Manager.numberOfSoldiers = Manager.PlayerTwoCountries.Count / 2;
             Manager.numberOfTanks = Manager.PlayerTwoCountries.Count / 4;
@@ -266,11 +266,32 @@ public class ActionCanvas : MonoBehaviour
             Manager.AttackCanvas.SetActive(false);
             isAttacking = false;
 
-            
-
-            if (attackerName.SoldiersNum >= defenderName.SoldiersNum && attackerName.TankNum == 0 && defenderName.TankNum == 0)
+            if (attackerName.SoldiersNum == 1)
             {
-                //Ataca com soldados
+                Debug.Log("Não pode atacar com só uma tropa");
+                if (defenderName.tag != attackerName.tag)
+                {
+                    foreach (GameObject obj in AttackCountries)
+                    {
+                        if (obj.tag == attackerName.tag)
+                        {
+                            attackerName.GetComponent<Renderer>().material.color = attackerName.playerColor;
+
+                        }
+                        else if (obj.tag == defenderName.tag)
+                        {
+                            defenderName.GetComponent<Renderer>().material.color = defenderName.playerColor;
+                        }
+                    }
+                }
+                AttackCountries.Clear();
+            }
+
+
+
+            if (attackerName.SoldiersNum > 1 && defenderName.SoldiersNum > 0 && attackerName.TankNum == 0 && defenderName.TankNum == 0)
+            {
+                
                 Troops = AttackCountries[0].GetComponent<Countries>().soldierPrefab.GetComponent<Troop>();
 
                 AttackDice = Troops.AttackNormal();
@@ -281,25 +302,48 @@ public class ActionCanvas : MonoBehaviour
 
                 if (AttackDice > DefendDice)
                 {
-                    defenderName.SoldiersNum = 0;
+                    defenderName.SoldiersNum = defenderName.SoldiersNum - 1;
                     defenderName.TankNum = 0;
                     defenderName.AANum = 0;
-                    defenderName.tag = attackerName.tag;
                     AttackDice = 0;
                     DefendDice = 0;
                     Debug.Log("Attack bem sucedido");
-                    if (defenderName.tag == attackerName.tag)
+
+                    if (defenderName.tag != attackerName.tag)
                     {
                         foreach (GameObject obj in AttackCountries)
                         {
-                            obj.GetComponent<Renderer>().material.color = DefaultColor;
+                            if (obj.tag == attackerName.tag)
+                            {
+                                attackerName.GetComponent<Renderer>().material.color = attackerName.playerColor;
+
+                            }
+                            else if (obj.tag == defenderName.tag)
+                            {
+                                defenderName.GetComponent<Renderer>().material.color = defenderName.playerColor;
+                            }
                         }
                     }
+
+                    if (defenderName.SoldiersNum == 0) 
+                    {
+                        defenderName.tag = attackerName.tag;
+
+                        if(defenderName.tag == attackerName.tag)
+                        {
+                            foreach (GameObject obj in AttackCountries)
+                            {
+                                obj.GetComponent<Renderer>().material.color = DefaultColor;
+                            }
+                        }
+                        
+                    }
+                    
 
                 }
                 else if (AttackDice < DefendDice)
                 {
-                    attackerName.SoldiersNum = attackerName.SoldiersNum--;
+                    attackerName.SoldiersNum = attackerName.SoldiersNum - 1;
                     AttackDice = 0;
                     DefendDice = 0;
                     Debug.Log("Attack falhou");
@@ -318,11 +362,12 @@ public class ActionCanvas : MonoBehaviour
                             }
                         }
                     }
+                    
                 }
 
             }
 
-            else  if (attackerName.SoldiersNum >= defenderName.SoldiersNum && attackerName.TankNum > 0 && defenderName.TankNum == 0)
+            else  if (attackerName.SoldiersNum > 1 && defenderName.SoldiersNum > 0 && attackerName.TankNum > 0 && defenderName.TankNum == 0)
             {
                  AttackDice = Troops.AttackAdvantage();
                  DefendDice = Troops.AttackNormal(); ;
