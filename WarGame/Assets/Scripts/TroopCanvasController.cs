@@ -49,7 +49,8 @@ public class TroopCanvasController : MonoBehaviour
             Countries country = hit.collider.GetComponent<Countries>();
             if (country != null)
             {
-                Debug.Log("Raicast");
+
+               
                 soldierImage.color = country.GetPlayerColor();
                 tankImage.color = country.GetPlayerColor();
                 planeImage.color = country.GetPlayerColor();
@@ -57,8 +58,11 @@ public class TroopCanvasController : MonoBehaviour
                 soldierText.text = country.SoldiersNum.ToString();
                 tankText.text = country.TankNum.ToString();
                 planeText.text = 0.ToString();
-                soldierText.text = country.AANum.ToString();
+                antiAerialText.text = country.AANum.ToString();
                 backgroundCanvas.SetActive(true);
+                
+
+                
 
             }
             else

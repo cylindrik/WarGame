@@ -27,9 +27,9 @@ public class Countries : MonoBehaviour
     public Color playerColor;
     private string playerName;
 
-    private int SoldiersAdded = 0;
+    //private int SoldiersAdded = 0;
 
-    private int TanksAdded = 0;
+    //private int TanksAdded = 0;
     private Vector3 CountryPosition;
 
     [SerializeField] public int SoldiersNum; // number of soldiers
@@ -47,14 +47,14 @@ public class Countries : MonoBehaviour
 
     private void Update()
     {
-        if (SoldiersNum != 0)
+       /* if (SoldiersNum != 0)
         {
             SoldierInstantiate();
         }
         if (TankNum != 0)
         {
             TankInstantiate();
-        }
+        }*/
     }
 
     public void SetMaterialColor(Material color)
@@ -82,7 +82,7 @@ public class Countries : MonoBehaviour
         return playerName;
     }
 
-    public void SoldierInstantiate()
+    /*public void SoldierInstantiate()
     {
 
         while (SoldiersNum != 0 && SoldiersAdded != SoldiersNum)
@@ -100,7 +100,7 @@ public class Countries : MonoBehaviour
             TanksAdded++;
         }
 
-    }
+    }*/
     
 }
     
